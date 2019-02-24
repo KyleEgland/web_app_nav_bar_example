@@ -1,0 +1,136 @@
+/* CSS file for Web App - Navigation Bar Example */
+
+/* Setting up some global style */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+nav{
+    /* Center vertically */
+    align-items: center;
+    background-color: #5d4954;
+    /* put things next to each other */
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    /* Justify the content (evenly spaced in document available space) */
+    justify-content: space-around;
+    /* specify the minimum height in Viewport Height percentage */
+    min-height: 8vh;
+}
+
+.logo {
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    /* this affects spacing between elements */
+    width: 40%;
+}
+
+.nav-links a{
+    color: rgb(226, 226, 226);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    /* Get rid of underline for links */
+    text-decoration: none;
+}
+
+.nav-links li{
+    /* remove bullets from links */
+    list-style: none;
+}
+
+/* Menu "icon" */
+.burger{
+    /* don't display it by default */
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    background-color: rgb(226, 226, 226);
+    height: 3px;
+    margin: 5px;
+    width: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Adjust link spacing when screen shrinks below 1000 pixels */
+@media screen and (max-width:1400px){
+    .nav-links{
+        width: 50%;
+    }
+}
+
+/* affect changes when screen goes below 768 pixels */
+@media screen and (max-width:768px){
+    body{
+        /* hide scrollbar */
+        overflow-x: hidden;
+    }
+    /* This is a test, leaving it in for reference, to ensure that the */
+    /* screen shrinks when first starting, uncomment the below code and */
+    /* adjust the browser size, the page will disappear */
+    /* body{
+        display: none;
+    } */
+    .nav-links{
+        position: absolute;
+        right: 0px;
+        /* take up most of screen */
+        height: 92vh;
+        /* place right under nav bar */
+        top: 8vh;
+        background-color: #5D4954;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        /* move whole container off the screen */
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+    }
+}
+
+.nav-active{
+    transform: translateX(0%)
+}
+
+/* building animation */
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Change the burger when menu bar is open */
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2{
+    opacity: 0;
+}
+
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px, -6px);
+}
